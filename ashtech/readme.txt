@@ -1,5 +1,8 @@
 
 
+zb00 - zb00 version of firmware
+zb00-alt - zb00 with fixed week rollover
+
 ze21 - Z-xtreme ze21 firmware official
 ze21-alt - z-xtreme ze21 firmware with week rollover fixed
 
