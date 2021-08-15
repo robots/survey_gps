@@ -2,7 +2,7 @@
 firmware files:
 4700 receiver:
 130may23-alt.47s - fixed week rollover on 1.30 official firmware.
-
+141fw-fix.bin  - fixed week rollover on 1.41 firmware. This can be loaded using loaderpy.
 
 To load this firmware you need Winflash program from trimble, serial cable and free com port on your system.
 
