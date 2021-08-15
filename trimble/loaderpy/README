@@ -1,0 +1,69 @@
+
+4000, 4400, 4700, (4800?) Trimble gps receiver loader
+------------------------------------------------------
+
+This tool can be used to load/flash memory of the Trimble Receiver. Most
+of the original tools (loader.exe and winflash) are already outdated. They
+can still be made to work, but require old hardware.
+
+This tool is written in Python3. Only dependency is pyserial package. From 
+hardware point of view you need serial port on your pc - usb to serial works.
+I recommend some better eg: ftdi or prolific based. Ch430 based dont support
+break on serial line.
+
+Features:
+
+4000/4400:
+- firmware loading
+- option reading
+- option programming
+
+4700:
+- firmware dumping
+- firmware loading
+- option reading
+- option programming
+
+
+4800:
+I "think" this receiver is similar to 4700, but I have not held it in my hands.
+(donations are welcome)
+
+
+Command line options:
+First you need to select receiver type: --type xxx
+where xxx = 4400 or 4000 or 4700
+and port: --port xyz
+where xyz is COMx on windows, /dev/ttyUSBxx on linux
+
+Then you need to supply operation
+--dump xx - this will dump firmware to file xx
+--prog xx - this will program firmware from file xx
+--opt_read - this command will read options programmed in receiver
+--opt_prog xx - will program options specified in xx
+--reset - if you want to reboot the receiver after done
+
+
+Programming firmware:
+Prog command understands multiple files:
+-.X files - used for 4000 and 4400/7400 receivers.
+-.bin files - binary file - not supported for 4000/4400/7400. 
+      It will do something, but not what you expect as these receivers
+      have firmware in multiple banks
+-S19 motorola style hex files - used for 4700 firmware
+
+Programming options:
+opt_prog command wants list of options you want to enable/change/disable.
+List is comma separated string of numbers, with NO space at all. If options wants 
+different value than 0, you specify it by colon after the number.
+Number of option is decimal, value of option is hexadecimal.
+
+--opt_prog 0,1,2,4:0xff,5:5
+
+This will set options 0 1 2 to value 0 (enable), option 4 to value 0xff (disable)
+and option 5 to value 5. This is only example. You can read available options in
+t4000.py file and t4700.py file.
+
+
+
+Have fun and as always responsibility is yours.
